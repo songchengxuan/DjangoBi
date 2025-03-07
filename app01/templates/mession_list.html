@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List 页面</title>
+</head>
+<body>
+    <h1>List 页面</h1>
+    <div><a href="/mession/add/">添加数据</a></div>
+    <form method="get">
+        <div>
+            <button type="submit">搜索</button>
+            <input type="text" name="mobile">
+        </div>
+    </form>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>连锁公司</th>
+            <th>营业部</th>
+            <th>商品代码</th>
+            <th>主推名称</th>
+            <th>任务目标</th>
+            <th>日期</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for obj in queryset %}
+            <tr>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.branch_name }}</td>
+                <td>{{ obj.org_department_name }}</td>
+                <td>{{ obj.satnr }}</td>
+                <td>{{ obj.main_attribute }}</td>
+                <td>{{ obj.mession_target }}</td>
+                <td>{{ obj.sdate }}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="/mession/{{ obj.id }}/edit/">编辑</a>
+                    <a class="btn btn-danger btn-xs" href="/mession/{{ obj.id }}/delete">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
